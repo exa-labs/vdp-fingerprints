@@ -11,6 +11,20 @@ If your report appears to match an issue that Exa has already flagged, the repor
 
 When a report is classified as a duplicate, we aim to provide enough information for you to understand and verify the decision. Where possible, you will be redirected to the matching fingerprint hash in Exa’s GitHub repository, along with a short, non-sensitive summary of the duplicate finding. This lets you confirm that the matching finding existed before your report was submitted, without exposing sensitive vulnerability details.
 
+## Verifying a fingerprint locally
+
+If you want to inspect the verification code and verify a proof on your local machine, review `prove.py` and run it against the published root record and the proof packet:
+
+```sh
+python3 prove.py fingerprint.json proof.json
+```
+
+The script checks that the proof packet's safe summary, finding commitment, proof path, and root all match the published fingerprint root in `fingerprint.json`. A successful verification prints:
+
+```text
+OK: proof matches fingerprint root <root>
+```
+
 ## Why we use fingerprints
 
 Fingerprints help us:
